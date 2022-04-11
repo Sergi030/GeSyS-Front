@@ -8,45 +8,53 @@ export interface StationDataProps {
   damagedStations: number;
   deactivatedStations: number;
 }
+
 export interface PromoRowProps {
-  Est: string;
-  Descuento: string;
-  Cupones: string; 
-  Fecha_ini: string; 
-  Fecha_fin: string; 
+  id: number;
+  estacion: string;
+  descuento: number;
+  usos
+  usosMax: number; 
+  fechaInicio: Date; 
+  fechaFin: Date; 
 }
 
 export interface EstacionRowProps {
-  Est: string,
-  Dir: string,
-  KWH: number,
-  MaxKWH: number,
-  Ocupacion: number,
-  MaxOcupacion: number,
-  m2: number,
-  enc: string,
-}
-export interface SoporteRowProps {
-  Name: string;
-  Problema: string;
-  Date: string; 
-}
-export interface AveriaRowProps {
-  Est: string;
-  Dir: string;
-  Date: string; 
-  State: string; 
-  Desc: string; 
+  id: number;
+  nombre: string;
+  direccion: string;
+  KWH: number;
+  maxKWH: number;
+  ocupacion: number;
+  maxOcupacion: number;
+  superficie: number;
+  encargado: string;
 }
 
-export type Rol = "Boss" | "Administrador" | "Trabajador";
+export interface SoporteRowProps {
+  nombre: string;
+  problema: string;
+  fecha: string; 
+}
+
+export type EstadoAveria = 'En proceso' | 'Resuelto';
+
+export interface AveriaRowProps {
+  id: number;
+  estacion: string;
+  fecha: Date;
+  estado: EstadoAveria;
+  descripcion: string;
+}
+
+export type RolWorker = 'Boss' | 'Administrador' | 'Trabajador';
 
 export interface TrabajadorRowProps {
   id: number;
-  Name: string;
-  Rol: Rol;
-  Last_access: Date; 
-  Foto: string;
+  nombre: string;
+  rol: RolWorker;
+  ultimoAcceso: Date; 
+  foto: string;
 }
 
 export interface NavbarItemProps {
