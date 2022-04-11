@@ -17,12 +17,14 @@ export interface PromoRowProps {
 }
 
 export interface EstacionRowProps {
-  Est: string;
-  Dir: string;
-  Kwh: string; 
-  Oc : string; 
-  m2: number; 
-  enc: string;
+  Est: string,
+  Dir: string,
+  KWH: number,
+  MaxKWH: number,
+  Ocupacion: number,
+  MaxOcupacion: number,
+  m2: number,
+  enc: string,
 }
 export interface SoporteRowProps {
   Name: string;
@@ -36,10 +38,14 @@ export interface AveriaRowProps {
   State: string; 
   Desc: string; 
 }
+
+export type Rol = "Boss" | "Administrador" | "Trabajador";
+
 export interface TrabajadorRowProps {
+  id: number;
   Name: string;
-  Rol: string;
-  Last_access: string; 
+  Rol: Rol;
+  Last_access: Date; 
   Foto: string;
 }
 
