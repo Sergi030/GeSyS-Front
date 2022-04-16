@@ -81,3 +81,14 @@ export interface PerfilData {
 export interface ErrorAPI {
   message: string;
 }
+
+export interface ReservaRowProps {
+  id: number;
+  reservante : number; // Esto tendrá que ser el id del cliente
+  matricula: string;
+  estacion: number; // Esto tendrá que ser el id de la estación
+  date: Date;
+  duration: number; // Tiempo de carga en minutos
+  kwh: number;
+  money: number;
+} 
