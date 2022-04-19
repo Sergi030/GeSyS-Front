@@ -92,3 +92,12 @@ export interface ReservaRowProps {
   kwh: number;
   money: number;
 } 
+
+export interface ClienteRowProps {
+  id: number;
+  nombre: string;
+  apellido: string;
+  telefono: string;
+  email: string;
+  foto: string;
+}
