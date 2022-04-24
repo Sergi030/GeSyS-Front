@@ -1,9 +1,11 @@
-import { MapContainer, TileLayer, Marker, Popup, useMapEvent } from "react-leaflet";
+import { useMap, MapContainer, TileLayer, Marker, Popup, useMapEvent } from "react-leaflet";
 import { IconAveria, IconDesactivado, IconFuncionando } from "./IconMarkerEstacion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LatLngExpression } from "leaflet";
 import EstacionPopup from "./EstacionPopup";
 import { MarkerEstacionProps, StationStatus } from '../../interfaces';
+import { GeoSearchControl, MapBoxProvider } from 'leaflet-geosearch';
+import { MapProps } from "../../interfaces";
 
 const accessToken = 'pk.eyJ1IjoieHBhdGF0YTY5IiwiYSI6ImNsMTZ4b2RxcDB5aG0za2thcjIwendlMXEifQ.vlI6K1U3_DOGuSaa8X7R3g';
 
@@ -67,6 +69,28 @@ const Map = () => {
 
   const [center, setCenter] = useState<LatLngExpression>([41.220285, 1.730198]);
 
+  const SearchField = ({ apiKey } : MapProps) => {
+
+    const provider = new MapBoxProvider({
+      params: {
+        access_token: apiKey,
+      },
+    });
+  
+    // @ts-ignore
+    const searchControl = new GeoSearchControl({
+      provider: provider,
+    });
+  
+    const map = useMap();
+    useEffect(() => {
+      map.addControl(searchControl);
+      return () => map.removeControl(searchControl);
+    }, []);
+  
+    return null;
+  };
+
   return (
     <MapContainer
       center={center}
@@ -74,6 +98,7 @@ const Map = () => {
       scrollWheelZoom={false}
       style={{ height: "100%", width: "100%", zIndex: 0 }}
     >
+       {<SearchField apiKey={accessToken} />}
       <TileLayer
         url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${accessToken}`} />
       

@@ -103,3 +103,7 @@ export interface EstadisticaEstacion {
   labels: string[];
   datasets: Dataset[];
 }
+
+export interface MapProps{
+  apiKey: string;
+}
