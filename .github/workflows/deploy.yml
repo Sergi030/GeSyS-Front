@@ -5,10 +5,10 @@ on:
       - main
 jobs:
   build:
-    name: Build
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using ssh key
+    - name: Deploying frontend on server
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
